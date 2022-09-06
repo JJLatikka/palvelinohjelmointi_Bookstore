@@ -12,4 +12,5 @@ PS. Mielenkiintoista on, että kun otin käyttöön java17:n, niin silti java8:l
 
 ## viikko3
 
-No-niin, nyt on lisätty kirjojen listaus ja alkoihan se h2-console:kin toimia...
+No-niin, nyt on lisätty kirjojen listaus ja alkoihan se h2-console:kin toimia, kun vain oli sama url kuin mitä siellä
+applicationproperties-tiedostossakin... 
