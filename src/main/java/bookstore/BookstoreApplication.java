@@ -1,5 +1,7 @@
 package bookstore;
 
+import java.util.Arrays;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -25,8 +27,9 @@ public class BookstoreApplication {
 	public CommandLineRunner studentDemo(BookRepository repo) {
 		return (args) -> {
 			log.info("save a couple of students");
-			repo.save(new Book("Kirja", "Kirjoittaja", 1, "007-1", 99.99));
-			repo.save(new Book("Kirja", "Kirjoittaja", 1, "007-2", 99.99));
+			Arrays.asList(new Integer[] { 0, 1, 2, 3 }).stream()
+					.map(i -> new Book("Kirja" + i, "Kirjoittaja" + i, i, "007-" + i, 99.99))
+					.forEach(b -> repo.save(b));
 
 			log.info("fetch all books");
 			for (Book b : repo.findAll()) {
