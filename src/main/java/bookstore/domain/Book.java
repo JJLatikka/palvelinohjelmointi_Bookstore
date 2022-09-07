@@ -9,11 +9,12 @@ import javax.persistence.Id;
 @Entity
 public class Book {
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String title;
 	private String author;
-	@Column(name="book_year")
+	@Column(name = "book_year")
 	private int year;
 	private String isbn;
 	private double price;
@@ -52,7 +53,7 @@ public class Book {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -80,8 +81,8 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return String.format("Book{title: %s, author: %s, year: %d, isbn: %s, price: %f}",
-				title, author, year, isbn, price);
+		return String.format("Book{title: %s, author: %s, year: %d, isbn: %s, price: %f}", title, author, year, isbn,
+				price);
 	}
 
 }
