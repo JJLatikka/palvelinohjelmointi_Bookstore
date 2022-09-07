@@ -16,7 +16,7 @@
 		</tr>
     	<tr th:each = "b : ${books}">
     		<td th:text="${b.getAuthor()}"></td><td th:text="${b.getTitle()}"></td>
-    		<td th:text="${b.getIsbn}"></td><td th:text="${b.getBear()}"></td>
+    		<td th:text="${b.getIsbn}"></td><td th:text="${b.getYear()}"></td>
     	</tr>
     </table>
     <div><a href="/addbook">Add Book</a></div>

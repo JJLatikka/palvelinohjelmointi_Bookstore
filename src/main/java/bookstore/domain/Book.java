@@ -1,5 +1,6 @@
 package bookstore.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,22 +9,22 @@ import javax.persistence.Id;
 @Entity
 public class Book {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String title;
 	private String author;
-	private int bear;			//bear == bookYear   :-#)#
+	@Column(name="bear")		// bear == bookYear   :-#)#
+	private int year;
 	private String isbn;
 	private double price;
 
 	public Book() {
 	}
 
-	public Book(String t, String a, int b, String i, double p) {
+	public Book(String t, String a, int y, String i, double p) {
 		this.title = t;
 		this.author = a;
-		this.bear = b;
+		this.year = y;
 		this.isbn = i;
 		this.price = p;
 	}
@@ -36,8 +37,8 @@ public class Book {
 		this.author = a;
 	}
 
-	public void setBear(int b) {
-		this.bear = b;
+	public void setYear(int y) {
+		this.year = y;
 	}
 
 	public void setIsbn(String i) {
@@ -56,8 +57,8 @@ public class Book {
 		return author;
 	}
 
-	public int getBear() {
-		return bear;
+	public int getYear() {
+		return year;
 	}
 
 	public String getIsbn() {
@@ -76,7 +77,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return String.format("Book{title: %s, author: %s, year: %d, isbn: %s, price: %f}",
-				title, author, bear, isbn, price);
+				title, author, year, isbn, price);
 	}
 
 }
