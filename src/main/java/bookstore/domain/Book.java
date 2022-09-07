@@ -13,7 +13,7 @@ public class Book {
 	private Long id;
 	private String title;
 	private String author;
-	@Column(name="bear")		// bear == bookYear   :-#)#
+	@Column(name="book_year")
 	private int year;
 	private String isbn;
 	private double price;
@@ -49,6 +49,10 @@ public class Book {
 		this.price = p;
 	}
 
+	public Long getId() {
+		return id;
+	}
+	
 	public String getTitle() {
 		return title;
 	}

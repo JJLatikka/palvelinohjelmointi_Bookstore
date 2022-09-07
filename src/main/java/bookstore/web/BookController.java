@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,7 +30,7 @@ public class BookController {
 		return "bookListTemplate";
 	}
 	
-    @RequestMapping("addbook")
+    @GetMapping("addbook")
     public String addBook(Model m){
     	m.addAttribute("book", new Book());
         return "addBookTemplate";
@@ -39,6 +40,12 @@ public class BookController {
     public String saveBook(Book b){
         repo.save(b);
         return "redirect:booklist";
-    }   
+    }
+    
+    @GetMapping("deletebook{id}")
+    public String deleteBook(@PathVariable("id") Long id) {
+    	repo.deleteById(id);
+        return "redirect:booklist";
+    }     
 
 }

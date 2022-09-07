@@ -17,8 +17,9 @@
     	<tr th:each = "b : ${books}">
     		<td th:text="${b.getAuthor()}"></td><td th:text="${b.getTitle()}"></td>
     		<td th:text="${b.getIsbn}"></td><td th:text="${b.getYear()}"></td>
+        <td><a th:href="@{deletebook{id}(id=${b.id})}">Delete</a></td>
     	</tr>
     </table>
-    <div><a href="/addbook">Add Book</a></div>
+    <div><a href="addbook">Add Book</a></div>
   </body>
 </html>
