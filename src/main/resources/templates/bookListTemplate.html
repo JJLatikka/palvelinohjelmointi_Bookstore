@@ -4,9 +4,8 @@
     <title>Booklist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
-      body {background-color: #B2B2B2;}
-      h1 {padding-left: 50px;}
-      th, td {padding-left: 25px; padding-right: 25px;}
+      body {background-color: #B2B2B2;} h1 {padding-left: 50px;}
+      th, td {padding-left: 25px; padding-right: 25px;} div {margin: 50px;}
     </style>
   </head>
   <body>
@@ -17,8 +16,9 @@
 		</tr>
     	<tr th:each = "b : ${books}">
     		<td th:text="${b.getAuthor()}"></td><td th:text="${b.getTitle()}"></td>
-    		<td th:text="${b.getIsbn}"></td><td th:text="${b.getYear()}"></td>
+    		<td th:text="${b.getIsbn}"></td><td th:text="${b.getBear()}"></td>
     	</tr>
     </table>
+    <div><a href="/addbook">Add Book</a></div>
   </body>
 </html>

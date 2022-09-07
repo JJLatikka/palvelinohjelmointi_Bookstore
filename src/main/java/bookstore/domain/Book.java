@@ -13,39 +13,39 @@ public class Book {
 	private Long id;
 	private String title;
 	private String author;
-	private int bookYear;
+	private int bear;			//bear == bookYear   :-#)#
 	private String isbn;
 	private double price;
 
 	public Book() {
 	}
 
-	public Book(String title, String author, int bookYear, String isbn, double price) {
-		this.title = title;
-		this.author = author;
-		this.bookYear = bookYear;
-		this.isbn = isbn;
-		this.price = price;
+	public Book(String t, String a, int b, String i, double p) {
+		this.title = t;
+		this.author = a;
+		this.bear = b;
+		this.isbn = i;
+		this.price = p;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitle(String t) {
+		this.title = t;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthor(String a) {
+		this.author = a;
 	}
 
-	public void setYear(int year) {
-		this.bookYear = year;
+	public void setBear(int b) {
+		this.bear = b;
 	}
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public void setIsbn(String i) {
+		this.isbn = i;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setPrice(double p) {
+		this.price = p;
 	}
 
 	public String getTitle() {
@@ -56,8 +56,8 @@ public class Book {
 		return author;
 	}
 
-	public int getYear() {
-		return bookYear;
+	public int getBear() {
+		return bear;
 	}
 
 	public String getIsbn() {
@@ -76,7 +76,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return String.format("Book{title: %s, author: %s, year: %d, isbn: %s, price: %f}",
-				title, author, bookYear, isbn, price);
+				title, author, bear, isbn, price);
 	}
 
 }
