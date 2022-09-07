@@ -14,7 +14,7 @@ import bookstore.domain.BookRepository;
 
 @Controller
 public class BookController {
-	
+
 	@Autowired
 	private BookRepository repo;
 
@@ -23,29 +23,36 @@ public class BookController {
 	public String donner() {
 		return "Lukeminen kannattaa aina!";
 	}
-	
+
 	@GetMapping("booklist")
 	public String bookList(Model m) {
 		m.addAttribute("books", repo.findAll());
 		return "bookListTemplate";
 	}
-	
-    @GetMapping("addbook")
-    public String addBook(Model m){
-    	m.addAttribute("book", new Book());
-        return "addBookTemplate";
-    }     
-    
-    @PostMapping("savebook")
-    public String saveBook(Book b){
-        repo.save(b);
-        return "redirect:booklist";
-    }
-    
-    @GetMapping("deletebook{id}")
-    public String deleteBook(@PathVariable("id") Long id) {
-    	repo.deleteById(id);
-        return "redirect:booklist";
-    }     
+
+	@GetMapping("addbook")
+	public String addBook(Model m) {
+		m.addAttribute("book", new Book());
+		return "addBookTemplate";
+	}
+
+	@PostMapping("savebook")
+	public String saveBook(Book b) {
+		repo.save(b);
+		return "redirect:booklist";
+	}
+
+	@GetMapping("deletebook{id}")
+	public String deleteBook(@PathVariable("id") Long id) {
+		repo.deleteById(id);
+		return "redirect:booklist";
+	}
+
+	@GetMapping("editbook{id}")
+	public String editBook(@PathVariable("id") Long id, Model m) {
+		m.addAttribute("book", repo.findById(id));
+		repo.deleteById(id);
+		return "addBookTemplate";
+	}
 
 }
