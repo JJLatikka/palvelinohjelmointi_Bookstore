@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 
 import bookstore.domain.Book;
 import bookstore.domain.BookRepository;
+import bookstore.domain.Category;
+import bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -24,17 +26,24 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner studentDemo(BookRepository repo) {
+	public CommandLineRunner bookstoreDemo(BookRepository repo, CategoryRepository repolainen) {
 		return (args) -> {
-			log.info("save a couple of students");
+			log.info("save a couple of students and a few categories");
+			Arrays.asList(
+					new String[] { "Kirjaston kirja", "Hyvä", "Parempi", "Paras", "Huono", "Huonompi", "Huonoin" })
+					.forEach(s -> repolainen.save(new Category(s)));
+
+			Category cat = repolainen.findByName("Kirjaston kirja").get(0);
+
 			Arrays.asList(new Integer[] { 0, 1, 2, 3 }).stream()
-					.map(i -> new Book("Kirja" + i, "Kirjoittaja" + i, i, "007-" + i, 99.99))
+					.map(i -> new Book("Kirja" + i, "Kirjoittaja" + i, i, "007-" + i, 99.99, cat))
 					.forEach(b -> repo.save(b));
 
 			log.info("fetch all books");
-			for (Book b : repo.findAll()) {
-				log.info(b.toString());
-			}
+			repo.findAll().forEach(b -> log.info(b.toString()));
+
+			log.info("fetch all categories");
+			repolainen.findAll().forEach(c -> log.info(c.toString()));
 		};
 	}
 

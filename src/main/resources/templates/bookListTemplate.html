@@ -12,11 +12,12 @@
 	  <h1>Books</h1>
     <table>
 		<tr>
-		  <th>Author</th><th>Title</th><th>ISBN</th><th>Year</th>
+		  <th>Author</th><th>Title</th><th>ISBN</th><th>Year</th><th>Category</th>
 		</tr>
     	<tr th:each = "b : ${books}">
     		<td th:text="${b.getAuthor()}"></td><td th:text="${b.getTitle()}"></td>
     		<td th:text="${b.getIsbn}"></td><td th:text="${b.getYear()}"></td>
+        <td th:text="${b.category.getName()}"></td>
         <td><a th:href="@{deletebook{id}(id=${b.id})}">Delete</a></td>
         <td><a th:href="@{editbook{id}(id=${b.id})}">Edit</a></td>
     	</tr>

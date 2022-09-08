@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -19,35 +21,20 @@ public class Book {
 	private String isbn;
 	private double price;
 
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
+
 	public Book() {
 	}
 
-	public Book(String t, String a, int y, String i, double p) {
+	public Book(String t, String a, int y, String i, double p, Category c) {
 		this.title = t;
 		this.author = a;
 		this.year = y;
 		this.isbn = i;
 		this.price = p;
-	}
-
-	public void setTitle(String t) {
-		this.title = t;
-	}
-
-	public void setAuthor(String a) {
-		this.author = a;
-	}
-
-	public void setYear(int y) {
-		this.year = y;
-	}
-
-	public void setIsbn(String i) {
-		this.isbn = i;
-	}
-
-	public void setPrice(double p) {
-		this.price = p;
+		this.category = c;
 	}
 
 	public Long getId() {
@@ -62,6 +49,10 @@ public class Book {
 		return author;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
 	public int getYear() {
 		return year;
 	}
@@ -74,6 +65,30 @@ public class Book {
 		return price;
 	}
 
+	public void setTitle(String t) {
+		this.title = t;
+	}
+
+	public void setAuthor(String a) {
+		this.author = a;
+	}
+
+	public void setCategory(Category c) {
+		this.category = c;
+	}
+
+	public void setYear(int y) {
+		this.year = y;
+	}
+
+	public void setIsbn(String i) {
+		this.isbn = i;
+	}
+
+	public void setPrice(double p) {
+		this.price = p;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		return o instanceof Book && this.isbn == ((Book) o).isbn;
@@ -81,8 +96,9 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return String.format("Book{title: %s, author: %s, year: %d, isbn: %s, price: %f}", title, author, year, isbn,
-				price);
+		String s = "Book{title: %s, author: %s, year: %d, isbn: %s, price: %f%s}";
+		String c = category != null ? String.format(", category: %s", category.getName()) : "";
+		return String.format(s, title, author, year, isbn, price, c);
 	}
 
 }
