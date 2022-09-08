@@ -22,18 +22,19 @@ public class Book {
 	private double price;
 
 	@ManyToOne
-	@JoinColumn(name = "categorytid")
+	@JoinColumn(name = "category_id")
 	private Category category;
 
 	public Book() {
 	}
 
-	public Book(String t, String a, int y, String i, double p) {
+	public Book(String t, String a, int y, String i, double p, Category c) {
 		this.title = t;
 		this.author = a;
 		this.year = y;
 		this.isbn = i;
 		this.price = p;
+		this.category = c;
 	}
 
 	public Long getId() {
@@ -96,7 +97,7 @@ public class Book {
 	@Override
 	public String toString() {
 		String s = "Book{title: %s, author: %s, year: %d, isbn: %s, price: %f%s}";
-		String c = category != null ? String.format(", category: %s", category) : "";
+		String c = category != null ? String.format(", category: %s", category.getName()) : "";
 		return String.format(s, title, author, year, isbn, price, c);
 	}
 
