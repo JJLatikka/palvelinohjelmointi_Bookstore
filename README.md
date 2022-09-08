@@ -14,4 +14,5 @@ PS. Mielenkiintoista on, että kun otin käyttöön java17:n, niin silti java8:l
 
 No-niin, nyt on lisätty kirjojen listaus ja alkoihan se h2-console:kin toimia, kun vain oli sama url kuin mitä siellä
 applicationproperties-tiedostossakin... Kirjojen lisäys ja poisto, sekä kirjojen muokkaus on myös nyt toteutettu. -
-Täytyy sanoa, että tuota muokkausta oli kyllä varsin hauskaa miettiä ja testailla!
+Täytyy sanoa, että tuota kirjojen muokkausta oli kyllä varsin hauskaa miettiä ja testailla! (Otin käyttöön editId-muuttujan,
+ettei tarvitse kirjoittaa samaa koodia moneen kertaan, eli DRY-pohjalta.) Tuo one-to-many on myös nyt lisätty.
