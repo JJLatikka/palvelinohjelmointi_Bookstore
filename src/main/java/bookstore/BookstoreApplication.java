@@ -24,7 +24,7 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner studentDemo(BookRepository repo) {
+	public CommandLineRunner bookstoreDemo(BookRepository repo) {
 		return (args) -> {
 			log.info("save a couple of students");
 			Arrays.asList(new Integer[] { 0, 1, 2, 3 }).stream()
@@ -32,9 +32,7 @@ public class BookstoreApplication {
 					.forEach(b -> repo.save(b));
 
 			log.info("fetch all books");
-			for (Book b : repo.findAll()) {
-				log.info(b.toString());
-			}
+			repo.findAll().forEach(b -> log.info(b.toString()));
 		};
 	}
 

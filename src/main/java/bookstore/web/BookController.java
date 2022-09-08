@@ -17,6 +17,7 @@ public class BookController {
 
 	@Autowired
 	private BookRepository repo;
+	private Long editId;
 
 	@RequestMapping("index")
 	@ResponseBody
@@ -38,6 +39,10 @@ public class BookController {
 
 	@PostMapping("savebook")
 	public String saveBook(Book b) {
+		if (editId != null) {
+			repo.deleteById(editId);
+			editId = null;
+		}
 		repo.save(b);
 		return "redirect:booklist";
 	}
@@ -50,8 +55,8 @@ public class BookController {
 
 	@GetMapping("editbook{id}")
 	public String editBook(@PathVariable("id") Long id, Model m) {
-		m.addAttribute("book", repo.findById(id));
-		repo.deleteById(id);
+		m.addAttribute("book", repo.findById(id).get());
+		editId = id;
 		return "addBookTemplate";
 	}
 
