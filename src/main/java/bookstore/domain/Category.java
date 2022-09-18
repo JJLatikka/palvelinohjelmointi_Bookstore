@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Category {
@@ -17,7 +20,8 @@ public class Category {
 	private Long id;
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "category")
 	private List<Book> books;
 
 	public Category() {
@@ -45,7 +49,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return String.format("Category{name: %s}", name);
+		return String.format("Category{name: %s, books in this category: %d}", name, books.size());
 	}
 
 }
