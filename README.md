@@ -16,3 +16,11 @@ No-niin, nyt on lisätty kirjojen listaus ja alkoihan se h2-console:kin toimia, 
 applicationproperties-tiedostossakin... Kirjojen lisäys ja poisto, sekä kirjojen muokkaus on myös nyt toteutettu. -
 Täytyy sanoa, että tuota kirjojen muokkausta oli kyllä varsin hauskaa miettiä ja testailla! (Otin käyttöön editId-muuttujan,
 ettei tarvitse kirjoittaa samaa koodia moneen kertaan, eli DRY-pohjalta.) Tuo one-to-many on myös nyt lisätty.
+
+
+## viikko4
+
+Mielenkiintoisia nämä rest-jutut, ja json on kyllä olio-ohjelmoinnin yhteydessä mainio juttu myös, ja varsin käteviä
+nämä orm-hommelit ovat, vaikka vähän sql:ää tuleekin ikävä. - Lisäsin Category-luokkaan 'booksInThisCategory'-muuttujan,
+koska halusin, että Category:n yhteydessä näytetään, että montako kirjaa siihen kuuluu. (Kiitos vaan siitä FetchType.EAGER
+vinkistä! :-#)# Ja nyt täytyy kyllä myöntää, että nuo 'getterit' ja 'setterit' ovat ihan hyvä keksintö myös!
