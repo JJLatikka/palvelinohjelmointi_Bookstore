@@ -19,6 +19,7 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
+	private long booksInThisCategory;
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "category")
@@ -47,9 +48,18 @@ public class Category {
 		return books;
 	}
 
+	public long getBooksInThisCategory() {
+		setBooksInThisCategory();
+		return booksInThisCategory;
+	}
+
+	public void setBooksInThisCategory() {
+		this.booksInThisCategory = books.size();
+	}
+
 	@Override
 	public String toString() {
-		return String.format("Category{name: %s, books in this category: %d}", name, books.size());
+		return String.format("Category{ name: %s, books in this category: %d }", name, getBooksInThisCategory());
 	}
 
 }

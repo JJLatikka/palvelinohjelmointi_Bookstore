@@ -23,7 +23,6 @@ public class Book {
 	private String isbn;
 	private double price;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
@@ -99,8 +98,8 @@ public class Book {
 
 	@Override
 	public String toString() {
-		String s = "Book{title: %s, author: %s, year: %d, isbn: %s, price: %f%s}";
-		String c = category != null ? String.format(", category: %s", category.getName()) : "";
+		String s = "Book{ title: %s, author: %s, year: %d, isbn: %s, price: %f%s }";
+		String c = category != null ? String.format(",\ncategory: %s", category) : "";
 		return String.format(s, title, author, year, isbn, price, c);
 	}
 

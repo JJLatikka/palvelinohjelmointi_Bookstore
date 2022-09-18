@@ -27,7 +27,9 @@ public class BookstoreApplication {
 
 	@Bean
 	public CommandLineRunner bookstoreDemo(BookRepository repo, CategoryRepository repolainen) {
+
 		return (args) -> {
+
 			log.info("save a couple of students and a few categories");
 			Arrays.asList(
 					new String[] { "Kirjaston kirja", "Hyvä", "Parempi", "Paras", "Huono", "Huonompi", "Huonoin" })
@@ -40,11 +42,13 @@ public class BookstoreApplication {
 					.forEach(b -> repo.save(b));
 
 			log.info("fetch all books");
-			repo.findAll().forEach(b -> log.info(b.toString()));
+			repo.findAll().forEach(b -> System.out.println(String.format("\n%s\n", b)));
 
 			log.info("fetch all categories");
-			repolainen.findAll().forEach(c -> log.info(c.toString()));
+			repolainen.findAll().forEach(c -> System.out.println(String.format("\n%s\n", c)));
+
 		};
+
 	}
 
 }
