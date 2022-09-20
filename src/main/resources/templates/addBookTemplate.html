@@ -11,7 +11,7 @@
   </head>
   <body>
 	  <h1>Add book</h1>
-      <form th:object="${book}" th:action="@{savebook}" action="#" method="post">
+      <form th:object="${book}" th:action="@{/savebook}" action="#" method="post">
         <div><label for="tit">Title</label><input type="text" id="tit" th:field="*{title}"/></div>
         <div><label for="aut">Author</label><input type="text" id="aut" th:field="*{author}"/></div>
         <div><label for="yea">Year</label><input type="text" id="yea" th:field="*{year}"/></div>

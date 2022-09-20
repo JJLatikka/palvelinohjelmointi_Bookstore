@@ -28,20 +28,20 @@ public class BookstoreController {
 		return "Lukeminen kannattaa aina!";
 	}
 
-	@GetMapping("booklist")
+	@GetMapping("/booklist")
 	public String bookList(Model m) {
 		m.addAttribute("books", repo.findAll());
 		return "bookListTemplate";
 	}
 
-	@GetMapping("addbook")
+	@GetMapping("/addbook")
 	public String addBook(Model m) {
 		m.addAttribute("book", new Book());
 		m.addAttribute("categories", repolainen.findAll());
 		return "addBookTemplate";
 	}
 
-	@PostMapping("savebook")
+	@PostMapping("/savebook")
 	public String saveBook(Book b) {
 		if (editId != null) {
 			repo.deleteById(editId);
