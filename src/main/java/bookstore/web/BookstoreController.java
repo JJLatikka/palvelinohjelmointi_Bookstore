@@ -1,8 +1,5 @@
 package bookstore.web;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bookstore.domain.Book;
 import bookstore.domain.BookRepository;
-import bookstore.domain.Category;
 import bookstore.domain.CategoryRepository;
 
 @Controller
@@ -67,26 +63,6 @@ public class BookstoreController {
 		m.addAttribute("categories", repolainen.findAll());
 		editId = id;
 		return "addBookTemplate";
-	}
-
-	@GetMapping("books")
-	public @ResponseBody List<Book> bookListRest() {
-		return (List<Book>) repo.findAll();
-	}
-
-	@GetMapping("book{id}")
-	public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long id) {
-		return repo.findById(id);
-	}
-
-	@GetMapping("categories")
-	public @ResponseBody List<Category> categoryList() {
-		return (List<Category>) repolainen.findAll();
-	}
-
-	@GetMapping("category{id}")
-	public @ResponseBody Optional<Category> findCategoryRest(@PathVariable("id") Long id) {
-		return repolainen.findById(id);
 	}
 
 }
