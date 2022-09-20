@@ -48,16 +48,16 @@ public class BookstoreController {
 			editId = null;
 		}
 		repo.save(b);
-		return "redirect:booklist";
+		return "redirect:/booklist";
 	}
 
-	@GetMapping("deletebook{id}")
+	@GetMapping("/deletebook/{id}")
 	public String deleteBook(@PathVariable("id") Long id) {
 		repo.deleteById(id);
-		return "redirect:booklist";
+		return "redirect:../booklist";
 	}
 
-	@GetMapping("editbook{id}")
+	@GetMapping("/editbook/{id}")
 	public String editBook(@PathVariable("id") Long id, Model m) {
 		m.addAttribute("book", repo.findById(id).get());
 		m.addAttribute("categories", repolainen.findAll());

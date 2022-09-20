@@ -18,8 +18,8 @@
     		<td th:text="${b.getAuthor()}"></td><td th:text="${b.getTitle()}"></td>
     		<td th:text="${b.getIsbn}"></td><td th:text="${b.getYear()}"></td>
         <td th:text="${b.category.getName()}"></td>
-        <td><a th:href="@{deletebook{id}(id=${b.id})}">Delete</a></td>
-        <td><a th:href="@{editbook{id}(id=${b.id})}">Edit</a></td>
+        <td><a th:href="@{/deletebook/{id}(id=${b.id})}">Delete</a></td>
+        <td><a th:href="@{/editbook/{id}(id=${b.id})}">Edit</a></td>
     	</tr>
     </table>
     <div><a href="/addbook">Add Book</a></div>
