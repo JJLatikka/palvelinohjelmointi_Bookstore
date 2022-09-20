@@ -22,7 +22,7 @@ public class BookstoreController {
 	private CategoryRepository repolainen;
 	private Long editId;
 
-	@RequestMapping("index")
+	@RequestMapping("/index")
 	@ResponseBody
 	public String donner() {
 		return "Lukeminen kannattaa aina!";
