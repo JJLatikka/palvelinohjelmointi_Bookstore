@@ -1,4 +1,4 @@
-package bookstore.web;
+package bookstore.web.restcontrollers;
 
 import java.util.Optional;
 
@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import bookstore.domain.Book;
-import bookstore.domain.BookRepository;
-import bookstore.domain.Category;
-import bookstore.domain.CategoryRepository;
+import bookstore.domain.entities.*;
+import bookstore.domain.repositories.*;
 
 @RestController
 public class BookstoreRestController {

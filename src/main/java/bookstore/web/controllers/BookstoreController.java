@@ -1,4 +1,4 @@
-package bookstore.web;
+package bookstore.web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import bookstore.domain.Book;
-import bookstore.domain.BookRepository;
-import bookstore.domain.CategoryRepository;
+import bookstore.domain.repositories.*;
+import bookstore.domain.entities.Book;
 
 @Controller
 public class BookstoreController {
