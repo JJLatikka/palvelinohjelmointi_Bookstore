@@ -24,3 +24,11 @@ Mielenkiintoisia nämä rest-jutut, ja json on kyllä olio-ohjelmoinnin yhteydes
 nämä orm-hommelit ovat, vaikka vähän sql:ää tuleekin ikävä. - Lisäsin Category-luokkaan 'booksInThisCategory'-muuttujan,
 koska halusin, että Category:n yhteydessä näytetään, että montako kirjaa siihen kuuluu. (Kiitos vaan siitä FetchType.EAGER
 vinkistä! :-#)# Ja nyt täytyy kyllä myöntää, että nuo 'getterit' ja 'setterit' ovat ihan hyvä keksintö myös!
+
+
+## viikko5
+
+Vielä vähän muutin ŔestController-luokan endpoint:teja rest-henkisemmiksi ja muutin Controller-luokan '/editbook'-endoint:in
+editointi-metodia siten, että ei poisteta olemassa olevaa kirjaa, vaan todellakin muutetaan sen sisältöä, ja siksi piti lisätä
+Book-luokkaan metodi setId(), vaikka luulin, ettei sillä olisi mitään käyttöä, koska id tulee automaattisesti, mutta editoinnissapa
+onkin, käyttöä siis!
