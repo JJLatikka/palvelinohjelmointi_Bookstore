@@ -28,7 +28,7 @@ vinkistä! :-#)# Ja nyt täytyy kyllä myöntää, että nuo 'getterit' ja 'sett
 
 ## viikko5
 
-Vielä vähän muutin RestController-luokan endpoint:teja rest-henkisemmiksi ja muutin Controller-luokan '/editbook'-endoint:in
+Vielä vähän muutin RestController-luokan endpoint:teja rest-henkisemmiksi ja muutin Controller-luokan '/editbook'-endpoint:in
 editointi-metodia siten, että ei poisteta olemassa olevaa kirjaa, vaan todellakin muutetaan sen sisältöä, ja siksi piti lisätä
 Book-luokkaan metodi setId(), vaikka luulin, ettei sillä olisi mitään käyttöä, koska id tulee automaattisesti, mutta editoinnissapa
 onkin, käyttöä siis!
