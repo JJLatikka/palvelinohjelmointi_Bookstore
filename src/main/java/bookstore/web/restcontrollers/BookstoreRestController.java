@@ -23,7 +23,7 @@ public class BookstoreRestController {
 		return repo.findAll();
 	}
 
-	@GetMapping("/book/{id}")
+	@GetMapping("/books/{id}")
 	public Optional<Book> findBookRest(@PathVariable("id") Long id) {
 		return repo.findById(id);
 	}
@@ -33,7 +33,7 @@ public class BookstoreRestController {
 		return repolainen.findAll();
 	}
 
-	@GetMapping("/category/{id}")
+	@GetMapping("/categories/{id}")
 	public Optional<Category> findCategoryRest(@PathVariable("id") Long id) {
 		return repolainen.findById(id);
 	}

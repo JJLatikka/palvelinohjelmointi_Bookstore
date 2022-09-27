@@ -65,6 +65,10 @@ public class Book {
 		return price;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setTitle(String t) {
 		this.title = t;
 	}

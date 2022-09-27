@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import bookstore.domain.repositories.*;
 import bookstore.domain.entities.Book;
+import bookstore.domain.repositories.BookRepository;
+import bookstore.domain.repositories.CategoryRepository;
 
 @Controller
 public class BookstoreController {
@@ -43,7 +44,7 @@ public class BookstoreController {
 	@PostMapping("/savebook")
 	public String saveBook(Book b) {
 		if (editId != null) {
-			repo.deleteById(editId);
+			b.setId(editId);
 			editId = null;
 		}
 		repo.save(b);
@@ -53,7 +54,7 @@ public class BookstoreController {
 	@GetMapping("/deletebook/{id}")
 	public String deleteBook(@PathVariable("id") Long id) {
 		repo.deleteById(id);
-		return "redirect:../booklist";
+		return "redirect:/booklist";
 	}
 
 	@GetMapping("/editbook/{id}")
