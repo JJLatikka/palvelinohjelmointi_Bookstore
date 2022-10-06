@@ -32,3 +32,12 @@ Vielä vähän muutin RestController-luokan endpoint:teja rest-henkisemmiksi ja 
 editointi-metodia siten, että ei poisteta olemassa olevaa kirjaa, vaan todellakin muutetaan sen sisältöä, ja siksi piti lisätä
 Book-luokkaan metodi setId(), vaikka luulin, ettei sillä olisi mitään käyttöä, koska id tulee automaattisesti, mutta editoinnissapa
 onkin, käyttöä siis!
+
+## viikko6
+
+Nyt on nuo validoinnit lisätty ja login/logout myös. Halusin oman login-tyylin, koska harjoitustyössä aion myös käyttää sellaista.
+Keksin myös mielestäni aika nokkelan tavan validointi-palautteen ja kirjautuneen käyttäjän tervehtimiseen yhdistelemällä thymeleaf:ia,
+javaScript:iä ja perinteistä java-olio-ohjelmointia. - Halusin, nimittäin, että käyttäjää tervehditään, ja että myös virheellisestä
+syötteestä annetaan palautetta käyttäjälle js-alert:illa. - Testasin myös virheen käsittelyä exceptionHandler-luokan avulla ja tämän
+tein siten, että 'unohdin vahingossa' user-statuksella olevalle näkyviin kirjan muokkaus-vaihtoehdon, johon user:illa ei kuitenkaan
+backend-puolella ole oikeuksia ja sain myös näytettyä käyttäjälle js-alert-palautteen tähän liittyen, eikä sovellus kaatunut.
