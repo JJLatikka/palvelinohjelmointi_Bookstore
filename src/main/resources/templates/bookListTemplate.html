@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     <title>Booklist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
       body {background-color: #B2B2B2;} h1 {padding-left: 50px;}
       th, td {padding-left: 25px; padding-right: 25px;} div {margin: 50px;}
+      form {width: 5%; margin: 50px} input {background-color: #C4C4C4; float: left;}
     </style>
   </head>
   <body>
@@ -18,10 +19,14 @@
     		<td th:text="${b.getAuthor()}"></td><td th:text="${b.getTitle()}"></td>
     		<td th:text="${b.getIsbn}"></td><td th:text="${b.getYear()}"></td>
         <td th:text="${b.category.getName()}"></td>
-        <td><a th:href="@{/deletebook/{id}(id=${b.id})}">Delete</a></td>
-        <td><a th:href="@{/editbook/{id}(id=${b.id})}">Edit</a></td>
+        <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletebook/{id}(id=${b.id})}">Delete</a></td>
+        <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editbook/{id}(id=${b.id})}">Edit</a></td>
     	</tr>
     </table>
-    <div><a href="/addbook">Add Book</a></div>
+    <div><a sec:authorize="hasAuthority('ADMIN')" href="/addbook">Add Book</a></div>
+    <form th:action="@{/logout}" method="post"><input type="submit" value="Sign out"/></form>
   </body>
+  <script th:if="${message} != null" type="text/javascript" th:data="${message}">
+    alert(document.currentScript.getAttribute("data"));
+  </script>
 </html>

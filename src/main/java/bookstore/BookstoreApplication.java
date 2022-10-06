@@ -2,20 +2,24 @@ package bookstore;
 
 import java.util.Arrays;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import bookstore.domain.entities.*;
-import bookstore.domain.repositories.*;
+import bookstore.domain.entities.AppUser;
+import bookstore.domain.entities.Book;
+import bookstore.domain.entities.Category;
+import bookstore.domain.repositories.AppUserRepository;
+import bookstore.domain.repositories.BookRepository;
+import bookstore.domain.repositories.CategoryRepository;
+import bookstore.web.controllers.BookstoreController;
 
 @SpringBootApplication
 public class BookstoreApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
+	private BookstoreController bC;
+	private REEH rEEH;
 
 	public static void main(String[] args) {
 
@@ -24,27 +28,34 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookstoreDemo(BookRepository repo, CategoryRepository repolainen) {
+	public CommandLineRunner bookstoreDemo(BookRepository bRepo, CategoryRepository cRepo, AppUserRepository aURepo) {
 
 		return (args) -> {
 
-			log.info("save a couple of students and a few categories");
+			this.bC = new BookstoreController();
+			this.rEEH = new REEH(bC);
+
+			aURepo.save(new AppUser("user", "$2a$10$bfbIcvOfWnN0XN.HkZAeN.FwNpZdFcQ5SxnVuXmjpl35e7qYU7TTu", "USER"));
+			aURepo.save(new AppUser("admin", "$2a$10$2JEr/FAUOR8gLaGtBlbcNuh0X9vc8smzjjCKKMkE5.dhS5kdDBfOm", "ADMIN"));
+
 			Arrays.asList(
 					new String[] { "Kirjaston kirja", "Hyvä", "Parempi", "Paras", "Huono", "Huonompi", "Huonoin" })
-					.forEach(s -> repolainen.save(new Category(s)));
-
-			Category cat = repolainen.findByName("Kirjaston kirja").get(0);
+					.forEach(s -> cRepo.save(new Category(s)));
+			Category cat = cRepo.findByName("Kirjaston kirja").get(0);
 
 			Arrays.asList(new Integer[] { 0, 1, 2, 3 }).stream()
 					.map(i -> new Book("Kirja" + i, "Kirjoittaja" + i, i, "007-" + i, 99.99, cat))
-					.forEach(b -> repo.save(b));
-
-			log.info("fetch all books");
-			repo.findAll().forEach(b -> System.out.println(String.format("\n%s\n", b)));
-
-			log.info("fetch all categories");
-			repolainen.findAll().forEach(c -> System.out.println(String.format("\n%s\n", c)));
-
+					.forEach(b -> bRepo.save(b));
+			/*
+			 * System.out.println("\nLuotiin muutama kategoria ja kirja ja kayttaja.\n");
+			 * 
+			 * bRepo.findAll().forEach(b -> System.out.println(String.format("\n%s\n", b)));
+			 * 
+			 * cRepo.findAll().forEach(c -> System.out.println(String.format("\n%s\n", c)));
+			 * 
+			 * aURepo.findAll().forEach(aU -> System.out.println(String.format("\n%s\n",
+			 * aU)));
+			 */
 		};
 
 	}

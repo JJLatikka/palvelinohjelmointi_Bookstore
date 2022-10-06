@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Book {
@@ -14,12 +16,22 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
+	@NotEmpty
 	private String title;
+
+	@NotEmpty
 	private String author;
+
 	@Column(name = "book_year")
-	private int year;
+	@NotNull
+	private Integer year;
+
+	@NotEmpty
 	private String isbn;
-	private double price;
+
+	@NotNull
+	private Double price;
 
 	@ManyToOne
 	@JoinColumn(name = "category_id")
@@ -53,7 +65,7 @@ public class Book {
 		return category;
 	}
 
-	public int getYear() {
+	public Integer getYear() {
 		return year;
 	}
 
@@ -61,7 +73,7 @@ public class Book {
 		return isbn;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
@@ -81,7 +93,7 @@ public class Book {
 		this.category = c;
 	}
 
-	public void setYear(int y) {
+	public void setYear(Integer y) {
 		this.year = y;
 	}
 
@@ -89,7 +101,7 @@ public class Book {
 		this.isbn = i;
 	}
 
-	public void setPrice(double p) {
+	public void setPrice(Double p) {
 		this.price = p;
 	}
 

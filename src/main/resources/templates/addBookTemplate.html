@@ -11,18 +11,19 @@
   </head>
   <body>
 	  <h1>Add book</h1>
-      <form th:object="${book}" th:action="@{/savebook}" action="#" method="post">
-        <div><label for="tit">Title</label><input type="text" id="tit" th:field="*{title}"/></div>
-        <div><label for="aut">Author</label><input type="text" id="aut" th:field="*{author}"/></div>
-        <div><label for="yea">Year</label><input type="text" id="yea" th:field="*{year}"/></div>
-        <div><label for="isb">ISBN</label><input type="text" id="isb" th:field="*{isbn}"/></div>
-        <div><label for="pri">Price</label><input type="text" id="pri" th:field="*{price}"/></div>
-        <div>
-          <label for="cat">Category</label><select id="cat" th:field="*{category}">
-            <option th:each="c: ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
-          </select>
-        </div>
-        <div style="margin: 50px;"><input type="submit" value="Save" style="float: left;"></input></div>
-      </form>
+    <form th:object="${book}" th:action="@{/savebook}" action="#" method="post">
+      <div><label for="tit">Title</label><input type="text" id="tit" th:field="*{title}"/></div>
+      <div><label for="aut">Author</label><input type="text" id="aut" th:field="*{author}"/></div>
+      <div><label for="yea">Year</label><input type="text" id="yea" th:field="*{year}"/></div>
+      <div><label for="isb">ISBN</label><input type="text" id="isb" th:field="*{isbn}"/></div>
+      <div><label for="pri">Price</label><input type="text" id="pri" th:field="*{price}"/></div>
+      <div>
+        <label for="cat">Category</label>
+        <select id="cat" th:field="*{category}">
+          <option th:each="c: ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+        </select>
+      </div>
+      <div style="margin: 50px;"><input type="submit" value="Save" style="float: left;"></input></div>
+    </form>
   </body>
 </html>
