@@ -35,9 +35,10 @@ onkin, käyttöä siis!
 
 ## viikko6
 
-Nyt on nuo validoinnit lisätty ja login/logout myös. Halusin oman login-tyylin, koska harjoitustyössä aion myös käyttää sellaista.
+Nyt on nuo validoinnit lisätty ja login / logout myös. Halusin oman login-tyylin, koska harjoitustyössä aion myös käyttää sellaista.
 Keksin myös mielestäni aika nokkelan tavan validointi-palautteen ja kirjautuneen käyttäjän tervehtimiseen yhdistelemällä thymeleaf:ia,
 javaScript:iä ja perinteistä java-olio-ohjelmointia. - Halusin, nimittäin, että käyttäjää tervehditään, ja että myös virheellisestä
-syötteestä annetaan palautetta käyttäjälle js-alert:illa. - Testasin myös virheen käsittelyä exceptionHandler-luokan avulla ja tämän
+syötteestä annetaan palautetta käyttäjälle, js-alert:illa. - Testasin myös virheen käsittelyä exceptionHandler-luokan avulla. Tämän
 tein siten, että 'unohdin vahingossa' user-statuksella olevalle näkyviin kirjan muokkaus-vaihtoehdon, johon user:illa ei kuitenkaan
-backend-puolella ole oikeuksia ja sain myös näytettyä käyttäjälle js-alert-palautteen tähän liittyen, eikä sovellus kaatunut.
+backend-puolella ole oikeuksia, ja sain myös näytettyä käyttäjälle js-alert-palautteen tähän liittyen, sen sijaan, että sovellus
+olisi esim. kaatunut.
