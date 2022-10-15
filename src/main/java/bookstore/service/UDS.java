@@ -22,9 +22,9 @@ public class UDS implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		AppUser aU = userRepository.findByUsername(username);
-		UserDetails d = new org.springframework.security.core.userdetails.User(username, aU.getPassHash(),
+	public UserDetails loadUserByUsername(String uN) throws UsernameNotFoundException {
+		AppUser aU = userRepository.findByUsername(uN);
+		UserDetails d = new org.springframework.security.core.userdetails.User(uN, aU.getPassHash(),
 				AuthorityUtils.createAuthorityList(aU.getRole()));
 		return d;
 	}

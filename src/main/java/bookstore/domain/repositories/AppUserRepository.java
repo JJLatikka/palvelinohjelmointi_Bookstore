@@ -6,6 +6,6 @@ import bookstore.domain.entities.AppUser;
 
 public interface AppUserRepository extends CrudRepository<AppUser, Long> {
 
-	AppUser findByUsername(String userName);
+	public AppUser findByUsername(String uN);
 
 }

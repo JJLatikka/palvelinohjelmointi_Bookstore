@@ -6,4 +6,6 @@ import bookstore.domain.entities.Book;
 
 public interface BookRepository extends CrudRepository<Book, Long> {
 
+	public Book findByTitle(String t);
+
 }

@@ -18,8 +18,8 @@ import bookstore.web.controllers.BookstoreController;
 @SpringBootApplication
 public class BookstoreApplication {
 
-	private BookstoreController bC;
-	private REEH rEEH;
+	private BookstoreController bC = new BookstoreController();
+	private REEH rEEH = new REEH(bC);
 
 	public static void main(String[] args) {
 
@@ -32,30 +32,26 @@ public class BookstoreApplication {
 
 		return (args) -> {
 
-			this.bC = new BookstoreController();
-			this.rEEH = new REEH(bC);
-
 			aURepo.save(new AppUser("user", "$2a$10$bfbIcvOfWnN0XN.HkZAeN.FwNpZdFcQ5SxnVuXmjpl35e7qYU7TTu", "USER"));
 			aURepo.save(new AppUser("admin", "$2a$10$2JEr/FAUOR8gLaGtBlbcNuh0X9vc8smzjjCKKMkE5.dhS5kdDBfOm", "ADMIN"));
 
 			Arrays.asList(
 					new String[] { "Kirjaston kirja", "Hyvä", "Parempi", "Paras", "Huono", "Huonompi", "Huonoin" })
-					.forEach(s -> cRepo.save(new Category(s)));
-			Category cat = cRepo.findByName("Kirjaston kirja").get(0);
+					.stream().map(s -> new Category(s)).forEach(cRepo::save);
+
+			Category cat = cRepo.findByName("Kirjaston kirja");
 
 			Arrays.asList(new Integer[] { 0, 1, 2, 3 }).stream()
-					.map(i -> new Book("Kirja" + i, "Kirjoittaja" + i, i, "007-" + i, 99.99, cat))
-					.forEach(b -> bRepo.save(b));
-			/*
-			 * System.out.println("\nLuotiin muutama kategoria ja kirja ja kayttaja.\n");
-			 * 
-			 * bRepo.findAll().forEach(b -> System.out.println(String.format("\n%s\n", b)));
-			 * 
-			 * cRepo.findAll().forEach(c -> System.out.println(String.format("\n%s\n", c)));
-			 * 
-			 * aURepo.findAll().forEach(aU -> System.out.println(String.format("\n%s\n",
-			 * aU)));
-			 */
+					.map(i -> new Book("Kirja" + i, "Kirjoittaja" + i, i, "007-" + i, 99.99, cat)).forEach(bRepo::save);
+
+			System.out.println("\nLuotiin muutama kategoria ja kirja ja kayttaja.\n");
+
+			bRepo.findAll().forEach(b -> System.out.println(String.format("\n%s\n", b)));
+
+			cRepo.findAll().forEach(c -> System.out.println(String.format("\n%s\n", c)));
+
+			aURepo.findAll().forEach(aU -> System.out.println(String.format("\n%s\n", aU)));
+
 		};
 
 	}

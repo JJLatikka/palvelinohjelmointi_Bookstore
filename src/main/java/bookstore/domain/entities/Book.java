@@ -27,6 +27,7 @@ public class Book {
 	@NotNull
 	private Integer year;
 
+	@Column(unique = true)
 	@NotEmpty
 	private String isbn;
 
@@ -40,7 +41,7 @@ public class Book {
 	public Book() {
 	}
 
-	public Book(String t, String a, int y, String i, double p, Category c) {
+	public Book(String t, String a, Integer y, String i, Double p, Category c) {
 		this.title = t;
 		this.author = a;
 		this.year = y;
@@ -103,11 +104,6 @@ public class Book {
 
 	public void setPrice(Double p) {
 		this.price = p;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		return o instanceof Book && this.isbn == ((Book) o).isbn;
 	}
 
 	@Override

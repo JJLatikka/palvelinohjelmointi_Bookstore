@@ -1,5 +1,7 @@
 package bookstore;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,6 +22,12 @@ public class REEH extends ResponseEntityExceptionHandler {
 	@ExceptionHandler({ AccessDeniedException.class })
 	public String handleAccessDeniedException(Exception e, WebRequest wR) {
 		bC.setErrorMessage("Access denied, sorry!");
+		return "redirect:/booklist";
+	}
+
+	@ExceptionHandler({ SQLIntegrityConstraintViolationException.class })
+	public String handleSQLIntegrConstViolException(Exception e, WebRequest wR) {
+		bC.setErrorMessage("The ISBN of a book must be unique!");
 		return "redirect:/booklist";
 	}
 
