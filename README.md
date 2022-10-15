@@ -42,3 +42,7 @@ syötteestä annetaan palautetta käyttäjälle, js-alert:illa. - Testasin myös
 tein siten, että 'unohdin vahingossa' user-statuksella olevalle näkyviin kirjan muokkaus-vaihtoehdon, johon user:illa ei kuitenkaan
 backend-puolella ole oikeuksia, ja sain myös näytettyä käyttäjälle js-alert-palautteen tähän liittyen, sen sijaan, että sovellus
 olisi esim. kaatunut.
+
+## viikko7
+
+Nyt on testitkin lisätty, sekä myös muuten vähän koodia viimeistelty. - Pitääpä nyt sitten vielä koittaa sitä heroku-hommaa!
